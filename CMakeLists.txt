@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.23)
+set(CMAKE_BUILD_TYPE Debug)
+project(data_struct)
+add_subdirectory(base)
+add_subdirectory(train_cpp)
