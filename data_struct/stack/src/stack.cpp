@@ -1,6 +1,5 @@
 #include "stack.hpp"
 
-
 template <class T>
 Stack<T>::Stack(int size):size_(size) {
     data_ = new T[size_];
@@ -29,8 +28,6 @@ Stack<T> &Stack<T>::operator=(const Stack &other) {
     return *this;
 }
 
-
-
 template <class T>
 Stack<T>::~Stack() {
     delete []data_;
@@ -47,12 +44,10 @@ T Stack<T>::Pop() {
     return data_[--top_];
 }
 
-
 template <class T>
 bool Stack<T>::IsEmpty() {
     return top_ == 0;
 }
-
 
 template <class T>
 Stack<T>::Stack(Stack && other) noexcept: data_(other.data_),size_(other.size_), top_(other.top_) {
