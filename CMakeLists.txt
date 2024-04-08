@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.23)
-set(CMAKE_BUILD_TYPE Debug)
 project(data_struct)
-add_subdirectory(base)
-add_subdirectory(train_cpp)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_BUILD_TYPE Debug)
+
+
+set(Stack_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/stack/include)
+
+add_subdirectory(data_struct)
