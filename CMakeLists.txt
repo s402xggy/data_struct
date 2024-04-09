@@ -6,5 +6,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 set(Stack_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/stack/include)
 set(Queue_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/queue/include)
+set(Slist_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/linklist/slist/include)
+
 
 add_subdirectory(data_struct)
