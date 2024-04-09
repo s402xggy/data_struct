@@ -13,7 +13,6 @@
 */
 
 
-
 template<class T>
 class Queue{
     public: 
@@ -98,20 +97,6 @@ class Queue{
         int size_;
         T *data_;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #endif

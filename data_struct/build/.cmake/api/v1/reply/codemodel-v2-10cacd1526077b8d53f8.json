@@ -1,0 +1,165 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "stack",
+					"jsonFile" : "directory-stack-Debug-33728854333ebc098aa2.json",
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "stack",
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						6,
+						7
+					]
+				},
+				{
+					"build" : "queue",
+					"jsonFile" : "directory-queue-Debug-ec56a12127f85120fb46.json",
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "queue",
+					"targetIndexes" : 
+					[
+						1,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "data_struct_cpp"
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "stack",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						6,
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "queue",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "dec_to_bin::@b5371760465ddb38638a",
+					"jsonFile" : "target-dec_to_bin-Debug-334ec62aa34f15459232.json",
+					"name" : "dec_to_bin",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "decode::@d63f5f69c5a9088733ed",
+					"jsonFile" : "target-decode-Debug-447115596767d1c0c526.json",
+					"name" : "decode",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "mid_to_last::@b5371760465ddb38638a",
+					"jsonFile" : "target-mid_to_last-Debug-b12001799922c7d2ec15.json",
+					"name" : "mid_to_last",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "palindrom::@b5371760465ddb38638a",
+					"jsonFile" : "target-palindrom-Debug-4e4442e3d9dc8300763c.json",
+					"name" : "palindrom",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "paren_match::@b5371760465ddb38638a",
+					"jsonFile" : "target-paren_match-Debug-66c687c7b940e8da6be4.json",
+					"name" : "paren_match",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "queue_test::@d63f5f69c5a9088733ed",
+					"jsonFile" : "target-queue_test-Debug-a48248fd2af74b8e2dbf.json",
+					"name" : "queue_test",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "reverse_polish::@b5371760465ddb38638a",
+					"jsonFile" : "target-reverse_polish-Debug-98a6dc54d920d0616517.json",
+					"name" : "reverse_polish",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "stack_main::@b5371760465ddb38638a",
+					"jsonFile" : "target-stack_main-Debug-58afd534f16dc7d97d13.json",
+					"name" : "stack_main",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/nvidia/disk/project/data_struct/data_struct/build",
+		"source" : "/home/nvidia/disk/project/data_struct/data_struct"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

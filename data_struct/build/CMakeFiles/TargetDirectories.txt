@@ -1,0 +1,14 @@
+/home/nvidia/disk/project/data_struct/data_struct/build/CMakeFiles/edit_cache.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/CMakeFiles/rebuild_cache.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/stack_main.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/reverse_polish.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/mid_to_last.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/paren_match.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/dec_to_bin.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/palindrom.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/edit_cache.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/stack/CMakeFiles/rebuild_cache.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/queue/CMakeFiles/queue_test.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/queue/CMakeFiles/decode.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/queue/CMakeFiles/edit_cache.dir
+/home/nvidia/disk/project/data_struct/data_struct/build/queue/CMakeFiles/rebuild_cache.dir
