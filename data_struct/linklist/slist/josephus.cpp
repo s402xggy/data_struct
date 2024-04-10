@@ -16,13 +16,6 @@ int main() {
     Josephus(loop_list);
 
 
-    
-
-
-
-
-
-
     return 0;
 }
 

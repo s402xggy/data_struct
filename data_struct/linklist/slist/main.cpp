@@ -1,5 +1,8 @@
 #include "slist.hpp"
 #include "loop_list.hpp"
+#include "dul_list.hpp"
+
+void ReversePrint(Dlist<int> &dlist);
 int main() {
     Slist<char> slist;
     slist.InsertAtTail('X');
@@ -35,10 +38,29 @@ int main() {
     loop_list.DeleteNode(3);
     loop_list.PrintSlist();
 
-
-
-
-
+    // 双向链表测试
+    Dlist<int> dlist;
+    dlist.InsertAtTail(1);
+    dlist.InsertAtTail(2);
+    dlist.InsertAtTail(3);
+    dlist.InsertAtTail(4);
+    dlist.InsertAtTail(5);
+    dlist.InsertAtTail(6);
+    dlist.InsertAtTail(7);
+    dlist.InsertAtTail(8);
+    dlist.InsertAtTail(9);
+    dlist.InsertAtTail(10);
+    dlist.PrintSlist();
+    ReversePrint(dlist);
 
     return 0;
+}
+
+void ReversePrint(Dlist<int> &dlist) {
+    Dnode<int> *head = dlist.GetTail();
+    while (head) {
+        cout << head->data << " ";
+        head = head->pre;
+    }
+    cout << endl;
 }

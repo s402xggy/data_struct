@@ -44,5 +44,4 @@ Node<int> * ReverseList(Slist<int> &list) {
     p->next = head;
     head = p;
     return head;
-
 }
