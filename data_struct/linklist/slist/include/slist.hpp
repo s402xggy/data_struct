@@ -25,13 +25,15 @@ class Slist{
             head_ = tail_ = nullptr;
         }
         ~Slist() {
-        Node<T>* current = head_;
-        while (current != nullptr) {
-            Node<T>* next = current->next;
-            delete current;
-            current = next;
-        }
-        head_ = tail_ = nullptr;
+        // Node<T>* current = head_;
+        // while (current != nullptr) {
+        //     Node<T>* next = current->next;
+        //     delete current;
+        //     current = next;
+        // }
+        // head_ = tail_ = nullptr;
+        delete []head_;
+        delete []tail_;
         }
     public:
         void InsertAtTail(T d) {
@@ -126,6 +128,13 @@ class Slist{
             cout << endl;
         }
 
+        Node<T> * GetHead() {
+            return head_;
+        }
+
+        Node<T> * GetTail() {
+            return tail_;
+        }
     private:
         Node<T> *head_;
         Node<T> *tail_;
