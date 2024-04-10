@@ -25,15 +25,16 @@ int main() {
     list1.PrintSlist();
     Node<int> *low;
     FindLast(list1, low, 1);
-    cout << low->data << endl;
+    cout << low->data << " ";
     FindLast(list1, low, 2);
-    cout << low->data << endl;
+    cout << low->data << " ";
     FindLast(list1, low, 3);
-    cout << low->data << endl;
+    cout << low->data << " ";
     FindLast(list1, low, 4);
-    cout << low->data << endl;
+    cout << low->data << " ";
     FindLast(list1, low, 5);
-    cout << low->data << endl;
+    cout << low->data << " ";
+
 
 
 }

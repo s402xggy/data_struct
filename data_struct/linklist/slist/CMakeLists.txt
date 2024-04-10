@@ -11,3 +11,6 @@ target_include_directories(delete_repeat PRIVATE ${Slist_Inc_Dir})
 
 add_executable(find_last find_last.cpp)
 target_include_directories(find_last PRIVATE ${Slist_Inc_Dir})
+
+add_executable(reverse_list reverse_list.cpp)
+target_include_directories(reverse_list PRIVATE ${Slist_Inc_Dir})
