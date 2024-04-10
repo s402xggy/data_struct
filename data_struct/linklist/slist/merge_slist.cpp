@@ -41,19 +41,21 @@ int main() {
 Node<int> *  MergeSlist(Slist<int> & list1, Slist<int> & list2) {
     Node<int> * pre1 = list1.GetHead();
     Node<int> * pre2 = list2.GetHead();
-    Node<int> * list1_tail = list1.GetTail();
-    Node<int> * list2_tail = list2.GetTail();
     Node<int> *head = nullptr, *tail = nullptr;
-
     while (pre1 && pre2) {
+        // 判断是否为第一次进入，第一次则让头指针和尾指针指向最小的节点。
         if (pre1->data < pre2->data) {
             if (head == nullptr) {
                 head = tail = pre1;
+                // 此时元素较小的链表更新为下一个节点
                 pre1 = pre1->next;
             }
             else {
+                // 尾指针当前节点的尾节点指向data小的节点
                 tail->next = pre1;
+                // 尾指针指向data小的节点。
                 tail = pre1;
+                // 此时元素较小的链表更新为下一个节点
                 pre1 = pre1->next;
             }
         }
@@ -63,7 +65,6 @@ Node<int> *  MergeSlist(Slist<int> & list1, Slist<int> & list2) {
                 pre2 = pre2->next;
             }
             else {
-
                 tail->next = pre2;
                 tail = pre2;
                 pre2 = pre2->next;
