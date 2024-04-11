@@ -2,6 +2,7 @@
 #define __BIN_TREE_HPP__
 
 #include <iostream>
+#include <algorithm>
 #include "queue.hpp"
 using namespace std;
 
@@ -28,13 +29,17 @@ struct BinTree{
         3、一般情况：为左子数的叶子树 + 右子树的叶子树。
     二叉树的节点树：
         1、二叉树为空： 节点树为0；
-        2、 一般情况： 左子树的节点个数+右子树的节点个数。
+        2、 一般情况： 左子树的节点个数+右子树的节点个数 + 1。
 */
 
 template<class T>
 class Btree{
     public:
         Btree():root_(nullptr){CreateBtree();};
+        Btree(std::string str):fill_blank_str_(str), root_(nullptr){
+            std::reverse(fill_blank_str_.begin(), fill_blank_str_.end());
+            FillBlankCreatBtree();
+        };
         ~Btree(){};
 
         void PrintBtree(void (*func)(BinTree<T> *)) {
@@ -53,38 +58,11 @@ class Btree{
             return func(root_);
         }
     private:
-        // 创建二叉树
-        BinTree<T> * CreateBtree() {
-            BinTree<T> *node = new BinTree<T>;
-            node->ltree = nullptr;
-            node->rtree = nullptr;
-            if (root_ == nullptr) {
-                root_ = node;
-            } 
-            cout << "请输入节点的元素： " << endl;
-            T data;
-            cin >> data;
-            node->data = data;
-            cout << "是否想要为节点 " << node->data << " 插入左子树： (Y/N)";
-            char flag;
-            cin >> flag;
-            cin.ignore();
-            if (flag == 'Y') 
-                node->ltree = CreateBtree();
-            else 
-                node->ltree = nullptr;
-            cout << "是否想要为节点 " << node->data << " 插入右子树： (Y/N)";
-            cin >> flag;
-            cin.ignore();
-            if (flag == 'Y') 
-                node->rtree = CreateBtree();
-            else 
-                node->rtree = nullptr;
-            return node;
-
-        };
+        BinTree<T> * CreateBtree();
+        BinTree<T> * FillBlankCreatBtree();
     private:
         BinTree<T> *root_;
+        std::string fill_blank_str_;
 };
 
 /*
@@ -175,4 +153,60 @@ int BtreeNodeNum(BinTree<T> *tree) {
         return BtreeNodeNum(tree->ltree) + BtreeNodeNum(tree->rtree) + 1;
     }
 }
+
+// 创建二叉树
+template <class T>
+BinTree<T> * Btree<T>::CreateBtree() {
+    BinTree<T> *node = new BinTree<T>;
+    node->ltree = nullptr;
+    node->rtree = nullptr;
+    if (root_ == nullptr) {
+        root_ = node;
+    } 
+    cout << "请输入节点的元素： " << endl;
+    T data;
+    cin >> data;
+    node->data = data;
+    cout << "是否想要为节点 " << node->data << " 插入左子树： (Y/N)";
+    char flag;
+    cin >> flag;
+    cin.ignore();
+    if (flag == 'Y') 
+        node->ltree = CreateBtree();
+    else 
+        node->ltree = nullptr;
+    cout << "是否想要为节点 " << node->data << " 插入右子树： (Y/N)";
+    cin >> flag;
+    cin.ignore();
+    if (flag == 'Y') 
+        node->rtree = CreateBtree();
+    else 
+        node->rtree = nullptr;
+    return node;
+
+};
+
+/*
+    补空法创建二叉树：
+
+*/
+template <class T>
+BinTree<T> * Btree<T>::FillBlankCreatBtree() {
+    BinTree<T> *node;
+    if (fill_blank_str_.back() == '#') {
+        fill_blank_str_.pop_back();
+        node = nullptr;
+    } else {
+        node = new BinTree<T>;
+        if (root_ == nullptr)
+            root_ = node;
+        node->data = fill_blank_str_.back();
+        fill_blank_str_.pop_back();
+        node->ltree = FillBlankCreatBtree();
+        node->rtree = FillBlankCreatBtree();
+    }
+    return node;
+}
+
+
 #endif
