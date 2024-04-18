@@ -70,6 +70,35 @@ class Btree{
         void PrintMidOrderThrad(void (*func)(BinTree<T> *)) {
             func(root_);
         }
+
+        // BinTree<T> * SearchThreadTree(BinTree<T> * (*func)(BinTree<T> *, T data), T data) {
+        //     return func(root_, data);
+        // }
+
+        // BinTree<T> * PrenodeThreadTree(BinTree<T> * tree) {
+        //     BinTree<T> * node;
+        //     if (tree->lflag == true) 
+        //         return tree->ltree;
+        //     else {
+        //         node = tree->ltree;
+        //         while (node->rflag == 0)
+        //            node = node->rtree; 
+        //         return node;
+        //     }
+        // }
+
+        // BinTree<T> * SuccnodeThreadTree(BinTree<T> * tree) {
+        //     BinTree<T> * node;
+        //     if (tree->rflag == true) 
+        //         return tree->rtree;
+        //     else {
+        //         node = tree->rtree;
+        //         while (node->lflag == 0)
+        //            node = node->ltree; 
+        //         return node;
+        //     }
+        // }
+
     private:
         BinTree<T> * CreateBtree();
         BinTree<T> * FillBlankCreatBtree();
@@ -267,6 +296,23 @@ void TraverseInorderThread(BinTree<T> *tree) {
         tree = tree->rtree;
     }
 }
+
+
+// template<class T>
+// BinTree<T> * SearchInorderThread(BinTree<T> *tree, T data) {
+//     while (tree) {
+//         while (tree->lflag == false) 
+//             tree = tree->ltree;
+//         if (tree->data = data)
+//             return tree;
+//         while (tree->rflag == true && tree->rtree != nullptr) {
+//             tree = tree->rtree;
+//             if (tree->data == data) 
+//                 return tree;
+//         }     
+//         tree = tree->rtree;
+//     }
+// }
 
 
 #endif

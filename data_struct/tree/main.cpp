@@ -33,5 +33,14 @@ int main() {
     fill_blank.PrintMidOrderThrad(TraverseInorderThread<char>);
     cout << endl;
 
+    // // 寻找前驱点。
+    // BinTree<char> *node = fill_blank.SearchThreadTree(SearchInorderThread<char>, 'A');
+    // cout << "当前节点为： " << node->data << endl;
+    // BinTree<char> *pre = fill_blank.PrenodeThreadTree(node);
+    // cout << "前驱点为： " << pre->data << endl;
+    // BinTree<char> *succ = fill_blank.SuccnodeThreadTree(node);
+    // cout << "后继点为： " << succ->data << endl;
+    
+
     return 0;
 }

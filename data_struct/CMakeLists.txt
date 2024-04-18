@@ -3,6 +3,6 @@ add_subdirectory(stack)
 add_subdirectory(queue)
 add_subdirectory(linklist)
 add_subdirectory(tree)
-add_subdirectory(labuladong)
+add_subdirectory(search)
 
 
