@@ -11,6 +11,8 @@ struct BinTree{
     T data;
     BinTree<T> *ltree;
     BinTree<T> *rtree;
+    bool lflag = false;
+    bool rflag = false;
 };
 
 /*
@@ -57,6 +59,17 @@ class Btree{
         int NodeNum(int (*func)(BinTree<T> *)) {
             return func(root_);
         }
+
+        void MidOrderThread(void (*func)(BinTree<T>*, BinTree<T> * &)) {
+            BinTree<T> *pre = nullptr;
+            func(root_, pre);
+            pre->rtree = nullptr;
+            pre->rflag = true;
+        }
+
+        void PrintMidOrderThrad(void (*func)(BinTree<T> *)) {
+            func(root_);
+        }
     private:
         BinTree<T> * CreateBtree();
         BinTree<T> * FillBlankCreatBtree();
@@ -98,7 +111,7 @@ void LastOrder(BinTree<T> *tree) {
         LastOrder(tree->ltree);
     if(tree->rtree != nullptr)
         LastOrder(tree->rtree);
-    cout << tree->data << " ";
+    cout << tree->data << " "; 
 
 }
 
@@ -206,6 +219,53 @@ BinTree<T> * Btree<T>::FillBlankCreatBtree() {
         node->rtree = FillBlankCreatBtree();
     }
     return node;
+}
+
+/*
+    线索化的方式： 先序，中序，后序线索化。
+    线索化的目的：快速的找到某一节点的前驱点和后继点（不同线索化的方式，某一节点的
+    前驱和后继是不同的）。二叉树进行线索化分析后得到，中序线索化是最优的。
+*/
+
+template <class T>
+void InOrderThread(BinTree<T> *tree, BinTree<T> * &pre) {
+    if (tree == nullptr)
+        return ;
+
+    InOrderThread(tree->ltree, pre); 
+    if (tree->ltree == nullptr) {
+        tree->lflag = true;
+        tree->ltree = pre;
+    }
+    else {
+        tree->lflag = false;
+    }
+
+    if (pre) {
+        if (pre->rtree == nullptr) {
+            pre->rtree = tree;
+            pre->rflag = true;
+        }
+        else 
+            pre->rflag = false;
+    }
+    pre = tree;
+
+    InOrderThread(tree->rtree, pre);
+}
+
+template<class T>
+void TraverseInorderThread(BinTree<T> *tree) {
+    while (tree) {
+        while (tree->lflag == false) 
+            tree = tree->ltree;
+        std::cout << tree->data << " ";
+        while (tree->rflag == true && tree->rtree != nullptr) {
+            tree = tree->rtree;
+            std::cout << tree->data << " ";
+        }     
+        tree = tree->rtree;
+    }
 }
 
 
