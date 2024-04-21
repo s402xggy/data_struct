@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <algorithm>
+#include <memory>
+
 #include "queue.hpp"
 using namespace std;
 
@@ -14,6 +16,38 @@ struct BinTree{
     bool lflag = false;
     bool rflag = false;
 };
+
+// 二叉树转换为二叉查找树。
+/*
+    1. 提供一组无序的数组
+    2. 产生二叉查找树
+*/
+template <class T>
+BinTree<T> * CreateBinSearchTree(T arr[], int n) {
+    BinTree<T> *tree = nullptr;
+    for (int i = 0; i < n; i++) {
+        InsertBinSearchTreeNode(tree, arr[i]);
+    }
+    return tree;
+}
+
+
+template <class T>
+BinTree<T> * InsertBinSearchTreeNode(BinTree<T> * &tree, T elem) {
+    if (tree == nullptr) {
+        tree = new BinTree<T>;
+        tree->data = elem;
+        tree->ltree = tree->rtree = nullptr;
+    }
+    else if (elem < tree->data)
+        InsertBinSearchTreeNode(tree->ltree, elem);
+    else if (elem > tree->data)
+        InsertBinSearchTreeNode(tree->rtree, elem);
+    else {
+        exit(0);
+    }
+    return tree;
+}
 
 /*
     二叉树：
@@ -42,6 +76,10 @@ class Btree{
             std::reverse(fill_blank_str_.begin(), fill_blank_str_.end());
             FillBlankCreatBtree();
         };
+        Btree(T arr[], int n){
+            root_ = CreateBinSearchTree(arr, n);
+        };
+
         ~Btree(){};
 
         void PrintBtree(void (*func)(BinTree<T> *)) {
@@ -71,6 +109,9 @@ class Btree{
             func(root_);
         }
 
+        int BsearchTreeFindElem(int (*func)(BinTree<T> *, T elem1), T elem2) {
+            return func(root_, elem2);
+        }
         // BinTree<T> * SearchThreadTree(BinTree<T> * (*func)(BinTree<T> *, T data), T data) {
         //     return func(root_, data);
         // }
@@ -313,6 +354,24 @@ void TraverseInorderThread(BinTree<T> *tree) {
 //         tree = tree->rtree;
 //     }
 // }
+
+// 查找二叉搜索树中的元素。
+
+template <class T>
+int SearchBstree(BinTree<T> *tree, T elem) {
+    BinTree<T> *temp = tree;
+    while (temp) {
+        if (temp->data == elem)
+            return 1;
+        else  if (temp->data > elem)
+            temp = temp->ltree;
+        else if (temp->data < elem)
+            temp = temp->rtree;
+    }
+    return 0;
+}
+
+
 
 
 #endif
