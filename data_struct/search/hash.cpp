@@ -1,5 +1,4 @@
 #include <iostream>
-#include "hash.hpp"
 
 
 const int SIZE = 12;
@@ -28,7 +27,6 @@ int main() {
     }
     else {
         std::cout << "哈希表中找到元素: " << elem << " 在哈希表位置： " << pos << std::endl;
-
     }
 
     return 0;

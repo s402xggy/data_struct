@@ -10,3 +10,6 @@ target_include_directories(avltree PRIVATE ${Bstree_Inc_Dir} ${Queue_Inc_Dir})
 
 add_executable(hash hash.cpp)
 target_include_directories(hash PRIVATE ${Bstree_Inc_Dir} ${Queue_Inc_Dir})
+
+add_executable(link_hash link_hash.cpp)
+target_include_directories(link_hash PRIVATE ${Bstree_Inc_Dir} ${Queue_Inc_Dir})
