@@ -146,6 +146,12 @@ BinTree<T> *RL_Rtation(BinTree<T> *tree) {
     后继点：为该节点的右子树的最左节点。
     此案例采用后继点替换。
 */
+
+/*
+    搜索：平衡二叉搜索树的插入只需要从插入节点的父节点向上检查，发现不平衡就调整。一次调整即可。
+    删除：而删除操作则需要一直从删除节点的父节点向上检查，发现不平衡就立即调整，然后继续向上检查，
+    检查到根节点为止。
+*/
 template <class T>
 BinTree<T>* DeleteAvltree(BinTree<T> *tree , T elem) {
     if (tree == nullptr) 
@@ -162,12 +168,47 @@ BinTree<T>* DeleteAvltree(BinTree<T> *tree , T elem) {
                 temp = temp->ltree;
             tree->data = temp->data;
             tree->rtree = DeleteAvltree(tree->rtree, tree->data);
+            if (GetAvlTreeHeight(tree->ltree) - GetAvlTreeHeight(tree->rtree) > 1) {
+                // LL型
+                BinTree<T> *temp = tree->ltree;
+                if (GetAvlTreeHeight(temp->ltree) >= GetAvlTreeHeight(temp->rtree)) {
+                    tree = LL_Rtation(tree);
+                }
+                // LR型
+                else  {
+                    tree = LR_Rtation(tree);
+                }
+            }
         }
     }
-    else if (tree->data > elem) 
+    else if (tree->data > elem) {
         tree->ltree = DeleteAvltree(tree->ltree, elem);
-    else 
+        if (GetAvlTreeHeight(tree->ltree) - GetAvlTreeHeight(tree->rtree) > 1) {
+            // RR型
+            BinTree<T> *temp = tree->rtree;
+            if (GetAvlTreeHeight(temp->rtree) >= GetAvlTreeHeight(temp->ltree)) {
+                tree = RR_Rtation(tree);
+            }
+            // RL型
+            else  {
+                tree = RL_Rtation(tree);
+            }
+        }
+    }
+    else {
         tree->rtree = DeleteAvltree(tree->rtree, elem);
+        if (GetAvlTreeHeight(tree->ltree) - GetAvlTreeHeight(tree->rtree) > 1) {
+            // LL型
+            BinTree<T> *temp = tree->ltree;
+            if (GetAvlTreeHeight(temp->ltree) >= GetAvlTreeHeight(temp->rtree)) {
+                tree = LL_Rtation(tree);
+            }
+            // LR型
+            else  {
+                tree = LR_Rtation(tree);
+            }
+        }
+    }
     return tree;
 }
 
