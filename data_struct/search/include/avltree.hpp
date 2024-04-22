@@ -249,11 +249,11 @@ class Avltree{
             func(root_);
         }
 
-        int BsearchTreeFindElem(int (*func)(BinTree<T> *, T elem1), T elem2) {
+        int AvlsearchTreeFindElem(int (*func)(BinTree<T> *, T elem1), T elem2) {
             return func(root_, elem2);
         }
        
-        void BsearchTreeDelete(BinTree<T> * (*func)(BinTree<T> *, T elem1), T elem2) {
+        void AvlsearchTreeDelete(BinTree<T> * (*func)(BinTree<T> *, T elem1), T elem2) {
             func(root_, elem2);
         }
 

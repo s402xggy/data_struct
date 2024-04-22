@@ -5,7 +5,12 @@ int main() {
     Avltree<int> btree(arr, SIZE);
     btree.PrintBtree(MidOrder<int>);
     cout << endl;
-
+    btree.AvlsearchTreeDelete(DeleteAvltree<int>, 100);
+    btree.PrintBtree(MidOrder<int>);
+    cout << endl;
+    btree.AvlsearchTreeDelete(DeleteAvltree<int>, 91);
+    btree.PrintBtree(MidOrder<int>);
+    cout << endl;
 
     return 0;
 }
