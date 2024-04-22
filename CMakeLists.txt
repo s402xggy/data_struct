@@ -8,9 +8,7 @@ set(Stack_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/stack/include)
 set(Queue_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/queue/include)
 set(Slist_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/linklist/slist/include)
 set(BinTree_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/tree/include)
-set(Bstree_DIR ${PROJECT_SOURCE_DIR}/data_struct/search/include)
-
-
+set(Bstree_Inc_Dir ${PROJECT_SOURCE_DIR}/data_struct/search/include)
 
 
 add_subdirectory(data_struct)

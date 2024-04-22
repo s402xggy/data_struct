@@ -8,18 +8,6 @@
 #include "queue.hpp"
 using namespace std;
 
-/*
-平衡二叉树：
-    1、平衡二叉树的左右子树高度差不超过1。
-    2、左右子树又分别是平衡二叉树。
-最小不平衡子树：
-    1、插入后，造成。
-
-*/
-
-
-
-
 template <class T> 
 struct BinTree{
     T data;
@@ -38,23 +26,73 @@ template <class T>
 BinTree<T> * CreateAvlSearchTree(T arr[], int n) {
     BinTree<T> *tree = nullptr;
     for (int i = 0; i < n; i++) {
-        InsertAvlSearchTreeNode(tree, arr[i]);
+        tree = InsertAvlSearchTreeNode(tree, arr[i]);
     }
     return tree;
 }
 
+/*
+    最坏情况下的二叉搜索树： （只有左左子树或只有右子树）
+    查找最多从根节点到叶子节点。
+    总结：二叉树的性能取决于二叉搜索树的高度。
+    因此可将二叉搜索树改变为左右子树一样高（理想情况下）,一般情况下左右子树的高度差不超过1
+    平衡二叉树：
+        1、左右子树的高度差不超过1
+        2、左右子树又分别是平衡二叉树。
+
+*/
+
+/*
+    LL型：从失衡点到新插入节点的前两个路径，如果是左子树，左子树。
+        处理：右旋。
+    RR型：从失衡点到新插入节点的前两个路径，如果是右子树，右子树。
+        处理：左旋。
+    LR型：
+
+    RL型：
+
+    
+*/
 
 template <class T>
-BinTree<T> * InsertAvlSearchTreeNode(BinTree<T> * &tree, T elem) {
+BinTree<T> * InsertAvlSearchTreeNode(BinTree<T> * tree, T elem) {
     if (tree == nullptr) {
         tree = new BinTree<T>;
         tree->data = elem;
         tree->ltree = tree->rtree = nullptr;
     }
-    else if (elem < tree->data)
-        InsertAvlSearchTreeNode(tree->ltree, elem);
-    else if (elem > tree->data)
-        InsertAvlSearchTreeNode(tree->rtree, elem);
+    else if (elem < tree->data) {
+        tree->ltree = InsertAvlSearchTreeNode(tree->ltree, elem);
+        // 检查是否平衡。
+        if (GetAvlTreeHeight(tree->ltree) - GetAvlTreeHeight(tree->rtree) > 1) {
+            // LL型
+            if (tree->ltree->data > elem) {
+                tree = LL_Rtation(tree);
+            }
+            // LR型
+            if (tree->ltree->data < elem) {
+                tree = LR_Rtation(tree);
+                tree = LL_Rtation(tree);
+
+            }
+        }
+
+    }
+    else if (elem > tree->data) {
+        tree->rtree = InsertAvlSearchTreeNode(tree->rtree, elem);
+        if (GetAvlTreeHeight(tree->rtree) - GetAvlTreeHeight(tree->ltree) > 1) {
+            // RR型
+            if (tree->rtree->data < elem) {
+                tree = RR_Rtation(tree);
+            }
+            // RL型
+            if (tree->rtree->data > elem) {
+                tree = RL_Rtation(tree);
+                tree = RR_Rtation(tree);
+            }
+
+        }
+    }
     else {
         exit(0);
     }
@@ -62,11 +100,58 @@ BinTree<T> * InsertAvlSearchTreeNode(BinTree<T> * &tree, T elem) {
 }
 
 template <class T>
+int GetAvlTreeHeight(BinTree<T> *tree) {
+    if (tree == nullptr) 
+        return 0;
+    return std::max(GetAvlTreeHeight(tree->ltree) , GetAvlTreeHeight(tree->rtree)) + 1;
+}
+
+
+template <class T>
+BinTree<T> *LL_Rtation(BinTree<T> *tree) {
+    BinTree<T> *temp = tree->ltree;
+    tree->ltree = temp->rtree;
+    temp->rtree = tree;
+    return temp;
+}
+
+template <class T>
+BinTree<T> *RR_Rtation(BinTree<T> *tree) {
+    BinTree<T> *temp = tree->rtree;
+    tree->rtree = temp->ltree;
+    temp->ltree = tree;
+    return temp;
+}
+
+template <class T>
+BinTree<T> *LR_Rtation(BinTree<T> *tree) {
+    tree->ltree = RR_Rtation(tree->ltree);
+    tree = LL_Rtation(tree);
+    return tree;
+}
+
+template <class T>
+BinTree<T> *RL_Rtation(BinTree<T> *tree) {
+    tree->rtree = LL_Rtation(tree->rtree);
+    tree = RR_Rtation(tree);
+    return tree;
+}
+
+
+
+/*
+    删除一个搜索二叉树的节点，采用替换该节点数据的方式。
+    中序遍历，选择该节点的前驱点或者该节点的后继点替换。
+    前驱点：为该节点的左子树的最右节点。
+    后继点：为该节点的右子树的最左节点。
+    此案例采用后继点替换。
+*/
+template <class T>
 BinTree<T>* DeleteAvltree(BinTree<T> *tree , T elem) {
     if (tree == nullptr) 
         exit(0);
     if (tree->data == elem) {
-        if (tree->ltree == nullptr) {
+        if (tree->rtree == nullptr) {
             BinTree<T> *temp = tree;
             tree = tree->ltree;
             delete temp;
@@ -229,19 +314,25 @@ int BtreeNodeNum(BinTree<T> *tree) {
 }
 
 
+
+
 template <class T>
-int SearchBstree(BinTree<T> *tree, T elem) {
+int SearchAvltree(BinTree<T> *tree, T elem) {
     BinTree<T> *temp = tree;
-    while (temp) {
-        if (temp->data == elem)
-            return 1;
-        else  if (temp->data > elem)
-            temp = temp->ltree;
-        else if (temp->data < elem)
-            temp = temp->rtree;
-    }
-    return 0;
+    if (temp == nullptr) 
+        return 0;
+    if (temp->data == elem) 
+        return 1;
+    else if (temp->data < elem) 
+        return SearchAvltree(temp->rtree, elem);
+    else if (temp->data > elem) 
+        return SearchAvltree(temp->ltree, elem);
+    
 }
+
+
+
+
 
 
 

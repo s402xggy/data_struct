@@ -24,7 +24,7 @@ int main() {
     else 
         cout << "在二叉搜索树中找到元素： " << x << endl;
 
-    btree.BsearchTreeDelete(DeleteBstree<int> , 11);
+    btree.BsearchTreeDelete(DeleteBstree<int> , 9);
     btree.PrintBtree(MidOrder<int>);
     cout << endl;
     return 0;
