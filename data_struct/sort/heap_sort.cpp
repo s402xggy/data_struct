@@ -16,10 +16,6 @@ void Swap(int *p1, int *p2);
     2、
 */
 
-
-
-
-
 int main() {
     int arr[SIZE] = {13, 4, 18, 31, 29, 12, 18, 22, 8, 21};
     HeapSort(arr, SIZE - 1);

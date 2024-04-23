@@ -61,5 +61,4 @@ void MergeSort(int arr[], int start, int mid, int end) {
     while (j < n2) {
         arr[k++] = right[j++];
     }
-
 }
