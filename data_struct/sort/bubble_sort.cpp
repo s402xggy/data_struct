@@ -2,11 +2,11 @@
 
 void BubbleSort(int arr[], int n);
 
-const int SIZE = 10;
+const int SIZE = 13;
 const int MAX = 100;
 int main() {
 
-    int arr[SIZE] = {13, 4, 18, 31, 29, 12, 18, 22, 8, 21};
+    int arr[SIZE] = {13, 4, 18, 31, 29, 12, 18, 22, 8, 21, 9, 24, 17};
     int sort[MAX + 1];
 
     BubbleSort(arr, SIZE);
@@ -30,5 +30,6 @@ void BubbleSort(int arr[], int n) {
         }
         BubbleSort(arr, --n);
     }
-
 }
+
+

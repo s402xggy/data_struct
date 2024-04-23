@@ -5,7 +5,11 @@
     通过设定不同的增量，得到一个相对有序的序列。
 
     最后进行一次增量为1的排序。
+
+
 */
+
+
 const int SIZE = 10;
 const int MAX = 100;
 void StraightInsertSort(int sort[], int size);
@@ -65,5 +69,6 @@ void ShellInsertSort(int sort[], int size, int di) {
         }
     }
 }
+
 
 
