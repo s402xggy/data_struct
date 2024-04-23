@@ -6,6 +6,8 @@ add_executable(bubble_sort bubble_sort.cpp)
 add_executable(quick_sort quick_sort.cpp)
 add_executable(select_sort select_sort.cpp)
 add_executable(heap_sort heap_sort.cpp)
+add_executable(merge_sort merge_sort.cpp)
+
 
 
 
