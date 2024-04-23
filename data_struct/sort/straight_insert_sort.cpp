@@ -1,9 +1,12 @@
 #include <iostream>
 
+//
 const int SIZE = 10;
 const int MAX = 100;
 
 void StraightInsertSort(int sort[], int size);
+
+
 
 int main() {
     int arr[SIZE] = {13, 4, 18, 31, 29, 12, 18, 22, 8, 21};
